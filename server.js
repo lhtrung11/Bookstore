@@ -6,6 +6,8 @@ const { connectDB } = require('./configs/db')
 connectDB();
 
 const authRoute = require('./routers/authRoute')
+const bookstoreRoute = require('./routers/bookstoreRoute')
+const productRoute = require('./routers/productRoute')
 const { register } = require('./controllers/authController')
 
 const express = require('express')
@@ -21,6 +23,8 @@ app.use(express.json());
 
 //Mount the route
 app.use('/auth', authRoute);
+app.use('/bookstore', bookstoreRoute);
+app.use('/product', productRoute);
 
 app.get('/', (req, res, next) => {
     res.status(200).json({

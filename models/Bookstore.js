@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 const bookstoreSchema = new mongoose.Schema({
     name: {type: String, unique: true, trim: true, required: [true, 'Name must be required']},
@@ -14,6 +15,18 @@ const bookstoreSchema = new mongoose.Schema({
     process: {type: Array},
     follower: {type: Array}
 }, {timestamps: true})
+
+bookstoreSchema.pre('save', function (next) {
+    let bookstore = this;
+    bcrypt.hash(bookstore.password, 10, function(error, hash) {
+        if (error) {
+            return next(error);
+        } else {
+            bookstore.password = hash;
+            next();
+        }
+    })
+})
 
 const Bookstore = mongoose.model('Bookstore', bookstoreSchema);
 
