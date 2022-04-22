@@ -10,7 +10,7 @@ const bookstoreSchema = new mongoose.Schema({
     username: {type: String, unique: true, trim: true, required: [true, 'Username must be required']},
     password: {type: String, trim: true, required: [true, 'Password must be required'], minlength: [8, 'Password must be at least 8 characters']},
     store: {type: Array},
-    favourite: {type: Array},
+    sales: {type: Number},
     history: {type: Array},
     process: {type: Array},
     follower: {type: Array}

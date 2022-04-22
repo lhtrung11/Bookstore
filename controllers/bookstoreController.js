@@ -1,5 +1,17 @@
 const Product = require('../models/Product');
 
+exports.getBookstore = async (req, res, next) => {
+    res.status(200).json({
+        //
+    })
+}
+
+exports.updateBookstore = async (req, res, next) => {
+    res.status(200).json({
+        //
+    })
+}
+
 exports.createProduct = async (req, res, next) => {
     try {
         const { bookstoreId } = req.store;
