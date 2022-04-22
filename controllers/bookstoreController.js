@@ -14,8 +14,7 @@ exports.updateBookstore = async (req, res, next) => {
 
 exports.createProduct = async (req, res, next) => {
     try {
-        const { bookstoreId } = req.store;
-        console.log(req.store);
+        const { bookstoreId } = req.bookstore;
         const product = await Product.create({...req.body, bookstoreId: bookstoreId});
         
         res.status(200).json({
@@ -30,7 +29,7 @@ exports.createProduct = async (req, res, next) => {
 exports.updateProduct = async (req, res, next) => {
     try {
         const { productId } = req.params;
-        const { bookstoreId } = req.store;
+        const { bookstoreId } = req.bookstore;
         console.log(bookstoreId)
         const product = await Product.findById(productId);
         if ( bookstoreId === product.bookstoreId ) {

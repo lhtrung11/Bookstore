@@ -12,7 +12,7 @@ exports.verifyToken = (req, res, next) => {
 
     const { bookstoreId } = jwt.verify(token, process.env.APP_SECRET);
 
-    req.store = { bookstoreId };
+    req.bookstore = { bookstoreId };
 
     next();
 }
